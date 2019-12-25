@@ -39,7 +39,7 @@ pipe[0] = {
 }
 
 var score = 0;
-// Позиция птички
+// Позиция какахи
 var xPos = 10;
 var yPos = 150;
 var grav = 1.5;
@@ -65,7 +65,7 @@ function draw() {
  && xPos <= pipe[i].x + pipeUp.width
  && (yPos <= pipe[i].y + pipeUp.height
  || yPos + bird.height >= pipe[i].y + pipeUp.height + gap) || yPos + bird.height >= cvs.height - fg.height) {
- location.reload(); // Перезагрузка страницы
+location.reload(); // Перезагрузка страницы
  }
 
  if(pipe[i].x == 5) {
@@ -81,7 +81,7 @@ function draw() {
 
  ctx.fillStyle = "#000";
  ctx.font = "24px Verdana";
- ctx.fillText("Счет: " + score, 10, cvs.height - 20);
+ ctx.fillText("Очки: " + score, 10, cvs.height - 20);
 
  requestAnimationFrame(draw);
 }
