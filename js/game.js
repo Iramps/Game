@@ -30,19 +30,24 @@ function moveUp() {
  fly.play();
 }
 
-// Создание блоков
-var pipe = [];
+var score, xPos, yPos, grav, pipe;
 
-pipe[0] = {
- x : cvs.width,
- y : 0
+function init() {
+    // Создание блоков
+    pipe = [];
+    pipe[0] = {
+     x : cvs.width,
+     y : 0
+    }
+
+    score = 0;
+    // Позиция какахи
+    xPos = 10;
+    yPos = 150;
+    grav = 1.5;
 }
 
-var score = 0;
-// Позиция какахи
-var xPos = 10;
-var yPos = 150;
-var grav = 1.5;
+init()
 
 function draw() {
  ctx.drawImage(bg, 0, 0);
@@ -65,7 +70,10 @@ function draw() {
  && xPos <= pipe[i].x + pipeUp.width
  && (yPos <= pipe[i].y + pipeUp.height
  || yPos + bird.height >= pipe[i].y + pipeUp.height + gap) || yPos + bird.height >= cvs.height - fg.height) {
-return location.reload(); // Перезагрузка страницы
+   // Перезапуск игры
+   init()
+   requestAnimationFrame(draw);
+   return;
  }
 
  if(pipe[i].x == 5) {
